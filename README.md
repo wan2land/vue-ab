@@ -35,8 +35,25 @@ Vue.use(VueAb, options)
 </head>
 <body>
   <div id="app">
-    <Ab>
-        ...
+    <Ab
+        @sample="(value) => candidate = value"
+        :weight="{candidate1: 100, candidate2: 100, candidate3: 10, candidate4: 10}"
+    >
+        <div slot="candidate1">
+            Candidate 1, (weight = 100)
+        </div>
+        <div slot="candidate2">
+            Candidate 2, (weight = 100)
+        </div>
+        <div slot="candidate3">
+            Candidate 3, (weight = 10)
+        </div>
+        <div slot="candidate4">
+            Candidate 4, (weight = 10)
+        </div>
+        <div slot="candidate5">
+            Candidate 5, (weight = 0), Never
+        </div>
     </Ab>
   </div>
 
