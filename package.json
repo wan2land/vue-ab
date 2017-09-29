@@ -1,6 +1,6 @@
 {
   "name": "vue-ab",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "A/B Testing Component for Vue.js",
   "author": "Changwan Jun",
   "license": "MIT",
