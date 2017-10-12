@@ -1,6 +1,7 @@
 {
   "name": "vue-ab",
   "version": "0.0.2",
+  "title": "Vue AB",
   "description": "A/B Testing Component for Vue.js",
   "author": "Changwan Jun",
   "license": "MIT",
@@ -9,7 +10,7 @@
     "url": "git://github.com/wan2land/vue-ab.git"
   },
   "scripts": {
-    "dev": "vue build build/dev.js --config build/vue.config.js",
+    "dev": "poi example-src/entry.js --config build/poi.config.js",
     "build:production": "cross-env NODE_ENV=production webpack --progress --hide-modules --config ./build/webpack.config.js",
     "build:example": "cross-env NODE_ENV=production webpack --progress --hide-modules --config ./build/webpack.example.js",
     "build": "npm run build:production && npm run build:example"
@@ -28,10 +29,12 @@
     "file-loader": "^0.9.0",
     "lodash": "^4.17.4",
     "node-sass": "^4.5.0",
+    "poi": "^9.3.10",
     "sass-loader": "^5.0.1",
     "uglifyjs-webpack-plugin": "^1",
     "vue": "^2.4.4",
     "vue-loader": "^13.0.4",
+    "vue-router": "^3.0.0",
     "vue-template-compiler": "^2.3.3",
     "webpack": "^2.6.1",
     "webpack-dev-server": "^2.4.5"
