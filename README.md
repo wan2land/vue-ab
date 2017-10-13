@@ -21,9 +21,9 @@ npm install vue-ab --save
 
 ```js
 import Vue from 'vue'
-import VueAb from 'vue-ab'
+import vAb from 'vue-ab'
 
-Vue.use(VueAb, options)
+Vue.component('v-ab', vAb)
 ```
 
 ### Globals
@@ -60,6 +60,7 @@ Vue.use(VueAb, options)
   <script src="path/to/vue.js"></script>
   <script src="path/to/vue-ab.js"></script>
   <script>
+    Vue.component('v-ab', VueAb);
     new Vue({
       el: '#app'
     })

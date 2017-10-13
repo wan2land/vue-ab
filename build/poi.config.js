@@ -13,7 +13,7 @@ module.exports = {
     template: resolve('build/template.html'),
   },
   webpack: function(config) {
-    config.resolve.alias['vue-ab'] = resolve('src')
+    config.resolve.alias[pkg.name] = resolve('src')
     return config
   }
 };
