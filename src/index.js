@@ -19,27 +19,21 @@ export default {
         },
         cookiePath: null,
     },
-    data() {
-        return {
-            candidate: null,
-        };
-    },
     mounted() {
-        var restoredCandidate = Cookie.get(this.cookieName);
-        var candidate;
-        var picked = false;
-        if (restoredCandidate && restoredCandidate in this.$slots) {
-            candidate = this.candidate = restoredCandidate;
-        } else {
-            picked = true;
-            candidate = this.candidate = pick(this.$slots, this.weight);
-            Cookie.set(this.cookieName, this.candidate, {expires: this.cookieExpires});
-        }
-        var index = Object.keys(this.$slots).indexOf(candidate);
-
-        this.$emit('load', candidate, index);
-        if (picked) this.$emit('pick', candidate, index);
+        let candidate = this.candidate;
+        let index = Object.keys(this.$slots).indexOf(candidate);
         this.$emit('sample', candidate, index);
+        this.$emit('load', candidate, index);
+    },
+    computed: {
+        candidate() {
+            var restoredCandidate = Cookie.get(this.cookieName);
+            if (restoredCandidate && restoredCandidate in this.$slots) {
+                return restoredCandidate;
+            } else {
+                return this._pick();
+            }
+        },
     },
     render(h) {
         if (!this.candidate) return;
@@ -50,12 +44,15 @@ export default {
         return h(this.tag, candidateSlot);
     },
     methods: {
+        _pick() {
+            let candidate = pick(this.$slots, this.weight);
+            Cookie.set(this.cookieName, candidate, {expires: this.cookieExpires});
+            this.$emit('pick', candidate, Object.keys(this.$slots).indexOf(candidate));
+            return candidate;
+        },
         resample() {
-            var candidate = this.candidate = pick(this.$slots, this.weight);
-            var index = Object.keys(this.$slots).indexOf(candidate);
-            Cookie.set(this.cookieName, this.candidate, {expires: this.cookieExpires});
-            this.$emit('pick', candidate, index);
-            this.$emit('sample', candidate, index);
+            let candidate = this._pick();
+            this.$emit('sample', candidate, Object.keys(this.$slots).indexOf(candidate));
         },
     },
 }

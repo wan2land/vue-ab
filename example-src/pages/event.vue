@@ -1,6 +1,34 @@
 <template>
   <div>
     <h2 class="mt-4">{{ $route.meta.title }}</h2>
+    <table class="table">
+      <thead>
+        <th>when</th>
+        <th style="width: 100px">@pick</th>
+        <th style="width: 100px">@sample</th>
+        <th style="width: 100px">@load</th>
+      </thead>
+      <tbody>
+        <tr>
+          <td>refresh (without cookie)</td>
+          <td>O</td>
+          <td>O</td>
+          <td>O</td>
+        </tr>
+        <tr>
+          <td>refresh (with cookie)</td>
+          <td></td>
+          <td>O</td>
+          <td>O</td>
+        </tr>
+        <tr>
+          <td>when call resample()</td>
+          <td>O</td>
+          <td>O</td>
+          <td></td>
+        </tr>
+      </tbody>
+    </table>
     <h5 class="mt-4">Demo</h5>
     <div>
       <button type="button" class="btn btn-primary" @click="$refs.ab.resample()">Re-Sample</button>
